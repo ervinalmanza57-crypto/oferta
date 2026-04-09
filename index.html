@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BELCORP Beauty | Tienda Oficial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BELCORP Beauty | Tienda Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">BELCORP <span>BEAUTY</span></div>
-            <div class="cart-icon" onclick="toggleCart()">
-                🛒 <span id="cart-count">0</span>
-            </div>
-        </nav>
-    </header>
+    <header>
+        <nav class="navbar">
+            <div class="logo">BELCORP <span>BEAUTY</span></div>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
 
-    <section class="hero-slider">
-        <div class="slider-container">
-            <div class="slide active" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(Esika.png);">
-                <div class="hero-content">
-                    <span class="badget-brand">ÉSIKA</span>
-                    <h1>Ésika PRO: Magnífica</h1>
-                    <div class="hero-btns"><a href="catalogo_esika.pdf" target="_blank" class="btn-main">Ver Catálogo Ésika</a></div>
-                </div>
-            </div>
-            <div class="slide" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(Lbel.png);">
-                <div class="hero-content">
-                    <span class="badget-brand">L'BEL</span>
-                    <h1>L'Bel: Alta Tecnología</h1>
-                    <div class="hero-btns"><a href="catalogo_lbel.pdf" target="_blank" class="btn-main">Ver Catálogo L'Bel</a></div>
-                </div>
-</div>
-            <div class="slide" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(Cyzone.png);">
-                <div class="hero-content">
-                    <span class="badget-brand">L'BEL</span>
-                    <h1>L'Bel: Alta Tecnología</h1>
-                    <div class="hero-btns"><a href="catalogo_cyzone.pdf" target="_blank" class="btn-main">Ver Catálogo Cyzone</a></div>
-                </div>
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(Esika.png);">
+                <div class="hero-content">
+                    <span class="badget-brand">ÉSIKA</span>
+                    <h1>Ésika PRO: Magnífica</h1>
+                    <div class="hero-btns"><a href="catalogo-esika.pdf" target="_blank" class="btn-main">Ver Catálogo Ésika</a></div>
+                </div>
+            </div>
+            <div class="slide" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,1) 100%), url(Lbel.png);">
+                <div class="hero-content">
+                    <span class="badget-brand">L'BEL</span>
+                    <h1>L'Bel: Alta Tecnología</h1>
+                    <div class="hero-btns"><a href="catalogo-lbel.pdf" target="_blank" class="btn-main">Ver Catálogo L'Bel</a></div>
+                </div>
+            </div>
+        </div>
+        <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
+    </section>
 
-            </div>
-        </div>
-        <button class="slider-arrow prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="slider-arrow next" onclick="moveSlide(1)">&#10095;</button>
-    </section>
+    <main class="catalog">
+        <section class="category-section">
+            <h2>Perfumes</h2>
+            <div class="product-grid" id="grid-perfumes"></div>
+        </section>
 
-    <main class="catalog">
-        <section class="category-section">
-            <h2>Perfumes</h2>
-            <div class="product-grid" id="grid-perfumes"></div>
-        </section>
+        <section class="category-section">
+            <h2>Maquillaje</h2>
+            <div class="product-grid" id="grid-maquillaje"></div>
+        </section>
 
-        <section class="category-section">
-            <h2>Maquillaje</h2>
-            <div class="product-grid" id="grid-maquillaje"></div>
-        </section>
+        <section class="category-section">
+            <h2>Tratamiento Facial</h2>
+            <div class="product-grid" id="grid-tratamiento"></div>
+        </section>
+    </main>
 
-        <section class="category-section">
-            <h2>Tratamiento Facial</h2>
-            <div class="product-grid" id="grid-tratamiento"></div>
-        </section>
-    </main>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Mi Pedido</h3>
+            <span class="close-cart" onclick="toggleCart()">×</span>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <p>Total: <strong>Bs <span id="cart-total">0.00</span></strong></p>
+            <button class="btn-checkout" onclick="checkoutWhatsApp()">Pedir por WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h3>Mi Pedido</h3>
-            <span class="close-cart" onclick="toggleCart()">×</span>
-        </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div class="cart-footer">
-            <p>Total: <strong>Bs <span id="cart-total">0.00</span></strong></p>
-            <button class="btn-checkout" onclick="checkoutWhatsApp()">Pedir por WhatsApp</button>
-        </div>
-    </div>
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-
-    <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
